@@ -17,8 +17,9 @@ class ContractProvider extends ChangeNotifier {
 
   String? _abiCode;
   EthereumAddress? _contractAddress;
-  EthereumAddress? _ownAdress;
+  EthereumAddress? ownAdress;
   EthereumAddress? _reciever;
+  EtherAmount? balance;
 
   Credentials? _credentials;
 
@@ -27,6 +28,7 @@ class ContractProvider extends ChangeNotifier {
   ContractFunction? _setName;
 
   String? deployedName;
+  String recieverAddress = '';
 
   ContractProvider() {
     initialSetup();
@@ -36,6 +38,9 @@ class ContractProvider extends ChangeNotifier {
     _client = Web3Client(_rpcUrl, Client(), socketConnector: () {
       return IOWebSocketChannel.connect(_wsUrl).cast<String>();
     });
+
+    getAbi();
+    getCredentials();
   }
 
   Future<void> getAbi() async {
@@ -47,5 +52,17 @@ class ContractProvider extends ChangeNotifier {
 
     _contractAddress =
         EthereumAddress.fromHex(jsonAbi["networks"]["5777"]["address"]);
+  }
+
+  String recieverHex(String hex){
+    recieverAddress = hex;
+    return recieverAddress;
+  }
+
+  Future<void> getCredentials() async {
+    _credentials = await _client!.credentialsFromPrivateKey(privateKey);
+    ownAdress = await _credentials!.extractAddress();
+    balance = await _client!.getBalance(ownAdress!);
+   _reciever = EthereumAddress.fromHex(recieverAddress);
   }
 }
