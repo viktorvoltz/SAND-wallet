@@ -65,4 +65,15 @@ class ContractProvider extends ChangeNotifier {
     balance = await _client!.getBalance(ownAdress!);
    _reciever = EthereumAddress.fromHex(recieverAddress);
   }
+
+  sendEther(String value){
+    _client!.sendTransaction(
+      _credentials!,
+      Transaction(
+        from: ownAdress,
+        to: _reciever,
+        value: EtherAmount.fromUnitAndValue(EtherUnit.ether, value),
+      )
+    );
+  }
 }
