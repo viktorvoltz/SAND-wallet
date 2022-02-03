@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 class ContractProvider extends ChangeNotifier {
   final String _rpcUrl = "http://10.0.2.2:7545";
   final String _wsUrl = "ws://10.0.2.2:7545/";
-  String privateKey = '77f0bf740572441faf36b3520676977cf0a214d8165d79a011f9d4ee028fb236';
+  String privateKey = '31803782a23a1501d29e59937a048211f704a018e823db2fa2ad13a97af606c3';
 
   Web3Client? _client;
 
@@ -63,9 +63,11 @@ class ContractProvider extends ChangeNotifier {
     _credentials = await _client!.credentialsFromPrivateKey(privateKey);
     ownAdress = await _credentials!.extractAddress();
     notifyListeners();
-    print(ownAdress.toString());
+    //print(ownAdress.toString());
     balance = await _client!.getBalance(ownAdress!);
-   _reciever = EthereumAddress.fromHex('0x3D2B43868D756D5DaB31aD7E25f18CBF97A4a629');
+    notifyListeners();
+    print(balance);
+   _reciever = EthereumAddress.fromHex('0x0D2895a33881f3271a2190F41e4F66e8e4Cfc771');
   }
 
   sendEther(String value){
