@@ -21,7 +21,6 @@ class _SendEtherState extends State<SendEther> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +28,13 @@ class _SendEtherState extends State<SendEther> {
         title: Text('Send ETH To ...', style: GoogleFonts.titilliumWeb()),
       ),
       body: Container(
+        margin: EdgeInsets.only(top: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              width: double.infinity,
               child: TextField(
                 controller: address,
                 decoration: InputDecoration(

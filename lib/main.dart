@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:web3_transactions/screens/homescreen.dart';
+import 'package:web3_transactions/screens/sendether.dart';
 
 import 'provider/contractProvider.dart';
 void main() {
@@ -20,7 +21,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.indigo,
         ),
-        home: HomeScreen(),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomeScreen(),
+          '/sendeth': (context) => const SendEther(),
+        },
       ),
     );
   }

@@ -78,7 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(40, 40), shape: const CircleBorder()),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/sendeth');
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       child: Icon(Icons.send),
