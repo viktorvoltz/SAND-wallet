@@ -63,11 +63,50 @@ class _HomeScreenState extends State<HomeScreen> {
             margin: EdgeInsets.only(top: 5),
             child: Text(
                 '${contractProvider.balance!.getInEther.toString()} ETH ',
-                style: GoogleFonts.titilliumWeb(fontWeight: FontWeight.w700, fontSize: 25)),
+                style: GoogleFonts.titilliumWeb(
+                    fontWeight: FontWeight.w700, fontSize: 25)),
           ),
           Container(
+            margin: EdgeInsets.only(bottom: 30),
             child: cryptoData(contractProvider),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(40, 40), shape: const CircleBorder()),
+                    onPressed: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Icon(Icons.send),
+                    ),
+                  ),
+                  Container(
+                    child: Text('Send', style: GoogleFonts.titilliumWeb()),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: const Size(40, 40), shape: const CircleBorder()),
+                    onPressed: () {},
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Icon(Icons.arrow_downward_sharp),
+                    ),
+                  ),
+                  Container(
+                    child: Text('Recieve', style: GoogleFonts.titilliumWeb()),
+                  )
+                ],
+              ),
+            ],
+          )
         ],
       ),
     );
@@ -84,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
             String ethPrice = contractProvider.balance!.getInEther.toString();
             var ePrice = double.parse(ethPrice);
             double newUSDPrice = dPrice * ePrice;
-            print('${newUSDPrice.toString().substring(0, 5)}' + 'USD');
+            //print('${newUSDPrice.toString().substring(0, 5)}' + 'USD');
             return Container(
               child: Text('\$${newUSDPrice.toString().substring(0, 5)} USD',
                   style: GoogleFonts.titilliumWeb()),
