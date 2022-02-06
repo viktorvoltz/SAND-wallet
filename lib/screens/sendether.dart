@@ -51,7 +51,7 @@ class _SendEtherState extends State<SendEther> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               width: double.infinity,
               child: TextField(
                 enableInteractiveSelection: true,
@@ -77,6 +77,9 @@ class _SendEtherState extends State<SendEther> {
                 ),
                 onPressed: () {
                   contractProvider.sendEther(amount.text, address.text);
+                  FocusScope.of(context).unfocus();
+                  address.clear();
+                  amount.clear();
                 },
               ),
             )
