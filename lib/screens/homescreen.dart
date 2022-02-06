@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: GoogleFonts.titilliumWeb()),
             );
           } else if (snapshot.hasError) {
-            return Text("couldn't get price");
+            return Text("couldn't fetch price");
           }
         }
         return Container(child: Text("... loading price"));

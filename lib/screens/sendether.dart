@@ -67,6 +67,9 @@ class _SendEtherState extends State<SendEther> {
               margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
               width: double.infinity,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.black
+                ),
                 child: Text(
                   'Send  🌈',
                   style: GoogleFonts.titilliumWeb(

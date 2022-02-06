@@ -78,7 +78,7 @@ class ContractProvider extends ChangeNotifier {
         from: ownAdress,
         to: reciever(rvalue),
         value: EtherAmount.fromUnitAndValue(EtherUnit.ether, value),
-      )
+      ),
     );
     await _balance();
   }
