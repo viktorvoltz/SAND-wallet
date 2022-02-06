@@ -62,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
             alignment: Alignment.center,
             margin: EdgeInsets.only(top: 5),
             child: Text(
-                '${contractProvider.balance!.getInEther.toString()} ETH ',
+                '${contractProvider.balance!.getInEther.toDouble().toString()} ETH ',
                 style: GoogleFonts.titilliumWeb(
                     fontWeight: FontWeight.w700, fontSize: 25)),
           ),
@@ -127,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
             double newUSDPrice = dPrice * ePrice;
             //print('${newUSDPrice.toString().substring(0, 5)}' + 'USD');
             return Container(
-              child: Text('\$${newUSDPrice.toString().substring(0, 5)} USD',
+              child: Text('\$${newUSDPrice.toString()} USD',
                   style: GoogleFonts.titilliumWeb()),
             );
           } else if (snapshot.hasError) {
