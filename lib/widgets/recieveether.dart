@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 void modalBottomSheetMenu(BuildContext context, String address) {
   showModalBottomSheet(
-    isScrollControlled: true,
+      isScrollControlled: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       context: context,
       builder: (builder) {
@@ -28,9 +28,8 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                   height: 5,
                   width: 50,
                   decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(30)
-                  ),
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(30)),
                 ),
                 Container(
                   height: 0.5,
@@ -53,24 +52,59 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                   size: 250,
                   embeddedImageStyle: QrEmbeddedImageStyle(size: Size(80, 80)),
                 ),
-                Text("Scan QR to get address", style: GoogleFonts.titilliumWeb()),
+                Text("Scan QR to get address",
+                    style: GoogleFonts.titilliumWeb()),
                 const SizedBox(height: 10),
                 Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   margin: EdgeInsets.symmetric(horizontal: 70),
                   height: 40,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.grey
-                  ),
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.black45),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('${address.substring(0, 5)}' + '...' + '${address.substring(38, 42)}'),
+                      Text(
+                        '${address.substring(0, 5)}' +
+                            '...' +
+                            '${address.substring(38, 42)}',
+                        style: GoogleFonts.titilliumWeb(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Container(
-                        child: Text("Copy",  style: GoogleFonts.titilliumWeb()),
-                      )
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        alignment: Alignment.center,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.black87,
+                        ),
+                        child: Text(
+                          "Copy",
+                          style: GoogleFonts.titilliumWeb(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        child: Icon(Icons.share, color: Colors.white,),
+                      ),
                     ],
-                  )
+                  ),
                 )
               ],
             ),
