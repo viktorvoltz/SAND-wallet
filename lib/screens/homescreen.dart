@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web3_transactions/provider/contractProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:web3_transactions/screens/recieveether.dart';
 import 'package:web3_transactions/services/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -96,7 +97,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         fixedSize: const Size(40, 40), shape: const CircleBorder()),
-                    onPressed: () {},
+                    onPressed: () {
+                      modalBottomSheetMenu(context, contractProvider.ownAdress.toString());
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       child: Icon(Icons.arrow_downward_sharp),
@@ -127,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
             double newUSDPrice = dPrice * ePrice;
             //print('${newUSDPrice.toString().substring(0, 5)}' + 'USD');
             return Container(
-              child: Text('\$${newUSDPrice.toString()} USD',
+              child: Text('\$${newUSDPrice.toString().substring(0, 5)} USD',
                   style: GoogleFonts.titilliumWeb()),
             );
           } else if (snapshot.hasError) {

@@ -40,6 +40,7 @@ dev_dependencies:
   web_socket_channel: ^2.1.0
   google_fonts: ^2.2.0
   flutter_svg: ^0.22.0
+  qr_flutter: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
