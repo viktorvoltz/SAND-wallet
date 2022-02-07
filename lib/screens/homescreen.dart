@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:web3_transactions/provider/contractProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:web3_transactions/screens/recieveether.dart';
+import 'package:web3_transactions/widgets/recieveether.dart';
 import 'package:web3_transactions/services/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -21,12 +21,19 @@ void modalBottomSheetMenu(BuildContext context, String address) {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 10),
-                height: 10,
+                margin: EdgeInsets.only(top: 10, bottom: 10),
+                height: 5,
                 width: 50,
                 decoration: BoxDecoration(
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(30)
+                ),
+              ),
+              Container(
+                height: 0.5,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
                 ),
               ),
               Container(
@@ -40,7 +47,7 @@ void modalBottomSheetMenu(BuildContext context, String address) {
               SizedBox(height: 10),
               QrImage(
                 data: address,
-                size: 200,
+                size: 250,
                 embeddedImageStyle: QrEmbeddedImageStyle(size: Size(80, 80)),
               )
             ],
