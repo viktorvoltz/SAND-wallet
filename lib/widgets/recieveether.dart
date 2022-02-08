@@ -4,8 +4,10 @@ import 'package:web3_transactions/provider/contractProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
+import 'package:share_plus/share_plus.dart';
 
 void modalBottomSheetMenu(BuildContext context, String address) {
+  final box = context.findRenderObject() as RenderBox?;
   showModalBottomSheet(
       isScrollControlled: true,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
@@ -118,10 +120,15 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                       const SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        child: Icon(
-                          Icons.share,
-                          color: Colors.white,
+                      GestureDetector(
+                        onTap: () async{
+                          await Share.share(address, sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size);
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.share,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
