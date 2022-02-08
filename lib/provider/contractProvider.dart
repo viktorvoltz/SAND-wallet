@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 class ContractProvider extends ChangeNotifier {
   final String _rpcUrl = "http://10.0.2.2:7545";
   final String _wsUrl = "ws://10.0.2.2:7545/";
-  String privateKey = '4b149a43b5ca39ea2bb1fce1a85ae4dea502ecfcbe743e1dc08f09eb4864be1a';
+  String privateKey = 'ec5f5a850854a658d9448280e7e72f2462a37a21790bdb0dc2faaa035bf34e21';
 
   Web3Client? _client;
 
@@ -29,6 +29,7 @@ class ContractProvider extends ChangeNotifier {
 
   String? deployedName;
   String recieverAddress = '';
+  List<Map<String, String>> transaction = [];
 
   ContractProvider() {
     initialSetup();
@@ -81,11 +82,24 @@ class ContractProvider extends ChangeNotifier {
       ),
     );
     await _balance();
+    transactionHistory(rvalue, value);
   }
 
   Future<EtherAmount?> _balance() async {
     balance = await _client!.getBalance(ownAdress!);
     notifyListeners();
     return balance;
+  }
+
+  void transactionHistory(String recieverAddress, String amountSent){
+    transaction.add(
+      {
+        "transaction_type": "Sent",
+        "amount": amountSent,
+        "from": ownAdress.toString(),
+        "to": recieverAddress
+      }
+    );
+    notifyListeners();
   }
 }

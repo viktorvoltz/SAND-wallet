@@ -25,6 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     ContractProvider contractProvider = Provider.of<ContractProvider>(context);
+    List<Map<String, String>> reversedTransaction =
+        contractProvider.transaction.reversed.toList();
 
     return Scaffold(
       appBar: PreferredSize(
@@ -78,7 +80,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(40, 40), shape: const CircleBorder()),
+                        fixedSize: const Size(40, 40),
+                        shape: const CircleBorder()),
                     onPressed: () {
                       Navigator.pushNamed(context, '/sendeth');
                     },
@@ -96,9 +99,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(40, 40), shape: const CircleBorder()),
+                        fixedSize: const Size(40, 40),
+                        shape: const CircleBorder()),
                     onPressed: () {
-                      modalBottomSheetMenu(context, contractProvider.ownAdress.toString());
+                      modalBottomSheetMenu(
+                          context, contractProvider.ownAdress.toString());
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -111,6 +116,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ],
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: reversedTransaction.length,
+              itemBuilder: (BuildContext context, index) {
+                return ListTile(
+                  horizontalTitleGap: 1.0,
+                  leading: Icon(
+                    Icons.send,
+                    color: Colors.red,
+                  ),
+                  title: Container(
+                    child: Text(
+                      'To: ${reversedTransaction[index]["to"]!.substring(0, 31)}...',
+                      overflow: TextOverflow.fade,
+                      style: GoogleFonts.titilliumWeb(fontWeight: FontWeight.w700)
+                    ),
+                  ),
+                  subtitle: Text(
+                    'From: ${reversedTransaction[index]["from"]!.substring(0, 31)}...',
+                    overflow: TextOverflow.fade,
+                  ),
+                  trailing: Text(
+                    '${reversedTransaction[index]["amount"]!} ETH',
+                    style: GoogleFonts.titilliumWeb(fontWeight: FontWeight.w700, fontSize: 16)
+                  ),
+                );
+              },
+            ),
           )
         ],
       ),
