@@ -3,6 +3,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 import 'package:web3_transactions/provider/contractProvider.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 
 void modalBottomSheetMenu(BuildContext context, String address) {
   showModalBottomSheet(
@@ -80,20 +81,37 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                       const SizedBox(
                         width: 10,
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        alignment: Alignment.center,
-                        width: 60,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Colors.black87,
-                        ),
-                        child: Text(
-                          "Copy",
-                          style: GoogleFonts.titilliumWeb(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
+                      GestureDetector(
+                        onTap: () {
+                          Clipboard.setData(
+                            ClipboardData(text: address),
+                          ).then((_) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                behavior: SnackBarBehavior.floating,
+                                content: Text("Address copied to clipboard"),
+                              ),
+                            );
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          alignment: Alignment.center,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: Colors.black87,
+                          ),
+                          child: Text(
+                            "Copy",
+                            style: GoogleFonts.titilliumWeb(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
@@ -101,7 +119,10 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                         width: 10,
                       ),
                       Container(
-                        child: Icon(Icons.share, color: Colors.white,),
+                        child: Icon(
+                          Icons.share,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
