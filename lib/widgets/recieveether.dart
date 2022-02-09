@@ -57,7 +57,7 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                 ),
                 Text("Scan QR to get address",
                     style: GoogleFonts.titilliumWeb()),
-                const SizedBox(height: 10),
+                const SizedBox(height: 30),
                 Container(
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 10),
