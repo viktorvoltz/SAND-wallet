@@ -58,6 +58,8 @@ flutter:
   assets:
     - assets/Flow.png
     - assets/eth.svg
+    - assets/activitySend.svg
+    - assets/sendETH.svg
     - src/artifacts/HelloWorld.json
   #   - images/a_dot_ham.jpeg
 

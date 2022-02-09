@@ -80,16 +80,24 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Column(
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
+                    Container(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
                           fixedSize: const Size(40, 40),
-                          shape: const CircleBorder()),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/sendeth');
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Icon(Icons.send),
+                          shape: const CircleBorder(),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/sendeth');
+                        },
+                        child: Container(
+                          child: SvgPicture.asset(
+                            'assets/sendETH.svg',
+                            alignment: Alignment.center,
+                            fit: BoxFit.scaleDown,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
                     Container(
@@ -99,17 +107,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Column(
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(40, 40),
-                          shape: const CircleBorder()),
-                      onPressed: () {
-                        modalBottomSheetMenu(
-                            context, contractProvider.ownAdress.toString());
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Icon(Icons.arrow_downward_sharp),
+                    Container(
+                      height: 50,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: const CircleBorder(),
+                            alignment: Alignment(0.0, 0.0)
+                            ),
+                        onPressed: () {
+                          modalBottomSheetMenu(
+                              context, contractProvider.ownAdress.toString());
+                        },
+                        child: Icon(
+                          Icons.arrow_downward_sharp,
+                          size: 40,
+                        ),
                       ),
                     ),
                     Container(
@@ -154,9 +166,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (BuildContext context, index) {
                     return ListTile(
                       horizontalTitleGap: 1.0,
-                      leading: Icon(
-                        Icons.send,
-                        color: Colors.red,
+                      leading: Container(
+                        height: 25,
+                        width: 25,
+                        child: SvgPicture.asset(
+                          'assets/activitySend.svg',
+                          color: Colors.red,
+                        ),
                       ),
                       title: Container(
                         child: Text(
