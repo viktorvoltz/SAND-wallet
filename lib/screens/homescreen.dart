@@ -45,13 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
             actions: [
               CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.orange,
-                child: CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage('assets/Union.png'),
-                ),
-              )
+                  radius: 30,
+                  backgroundColor: Colors.white,
+                  child: Container(
+                    height: 40,
+                    child: SvgPicture.asset('assets/Union.svg'),
+                  ))
             ],
           ),
         ),
@@ -112,8 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             shape: const CircleBorder(),
-                            alignment: Alignment(0.0, 0.0)
-                            ),
+                            alignment: Alignment(0.0, 0.0)),
                         onPressed: () {
                           modalBottomSheetMenu(
                               context, contractProvider.ownAdress.toString());
