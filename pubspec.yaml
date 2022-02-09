@@ -60,6 +60,7 @@ flutter:
     - assets/eth.svg
     - assets/activitySend.svg
     - assets/sendETH.svg
+    - assets/Union.svg
     - src/artifacts/HelloWorld.json
   #   - images/a_dot_ham.jpeg
 

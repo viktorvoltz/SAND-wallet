@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: Colors.orange,
                 child: CircleAvatar(
                   radius: 25,
-                  backgroundImage: AssetImage('assets/Flow.png'),
+                  backgroundImage: AssetImage('assets/Union.png'),
                 ),
               )
             ],

@@ -45,9 +45,9 @@ class _SendEtherState extends State<SendEther> {
                     border: OutlineInputBorder(),
                     hintText: "Enter address to send to",
                     labelText: "Address",
-                    errorText: address.text.startsWith('0x')
+                    errorText: address.text.contains('0x')
                         ? null
-                        : 'Enter a valid ETH address'),
+                        : null),
               ),
             ),
             Container(
