@@ -1,16 +1,18 @@
-# web3_transactions
+# SAND wallet
 
-A new Flutter project.
+This is an on-chain(truffle) ETH wallet with traditional crypto wallet features (including live ETH price display). I enjoyed playing with emojis in this one 😎
 
-## Getting Started
+## homescreen with activity details
+<img src="https://user-images.githubusercontent.com/45709308/153412786-538c2fa6-e382-4974-8bd7-cce2faf592c0.png" width=40% height=40%>
 
-This project is a starting point for a Flutter application.
+## Ganache wallet addresses with corresponding transactions
+<img src="https://user-images.githubusercontent.com/45709308/153416495-7ce8d08e-e8e0-41cb-bbe1-2f943e75ac86.png" width=60% height=50%>
 
-A few resources to get you started if this is your first Flutter project:
+## QR to reveal public address
+<img src="https://user-images.githubusercontent.com/45709308/153413572-d4c191a2-f4cc-448e-baf4-8272b72d233a.png" width=40% height=40%>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## share feature
+<img src="https://user-images.githubusercontent.com/45709308/153413647-5d1346a9-f48c-402c-a420-c8f3fb13b131.png" width=40% height=40%>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Send ETH
+<img src="https://user-images.githubusercontent.com/45709308/153413776-4d242a4f-6b71-4d0b-8999-4e50de9f3689.png" width=40% height=40%>
