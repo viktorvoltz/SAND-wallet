@@ -4,7 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<Map<String, dynamic>> getData() async {
   final response = await http.get(
-    Uri.parse('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD,JPY,EUR&api_key=7b79ddb622e1ee13e5d625a35bd9de8c1e5fa88b075562af450cbd687cb6eda7'
+    Uri.parse(dotenv.env['CRYPTO_API']!
         ),
   );
   if (response.statusCode == 200) {

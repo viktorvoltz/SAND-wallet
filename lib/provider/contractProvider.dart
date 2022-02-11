@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 class ContractProvider extends ChangeNotifier {
   final String _rpcUrl = "http://10.0.2.2:7545";
   final String _wsUrl = "ws://10.0.2.2:7545/";
-  String privateKey = '065bde02819d6630cc3eeac1605434824b8ab2d705dd5302c4bf4b4a0fe02e30';
+  String privateKey = dotenv.env['PRIVATE_KEY']!;
 
   Web3Client? _client;
 
@@ -18,16 +18,10 @@ class ContractProvider extends ChangeNotifier {
   String? _abiCode;
   EthereumAddress? _contractAddress;
   EthereumAddress? ownAdress;
-  EthereumAddress? _reciever;
   EtherAmount? balance;
 
   Credentials? _credentials;
 
-  DeployedContract? _contract;
-  ContractFunction? _yourName;
-  ContractFunction? _setName;
-
-  String? deployedName;
   String recieverAddress = '';
   List<Map<String, String>> transaction = [];
 

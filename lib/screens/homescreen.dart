@@ -24,8 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ContractProvider contractProvider = Provider.of<ContractProvider>(context);
-    List<Map<String, String>> reversedTransaction =
+    ContractProvider? contractProvider = Provider.of<ContractProvider>(context);
+    List<Map<String, String>>? reversedTransaction =
         contractProvider.transaction.reversed.toList();
 
     return DefaultTabController(
