@@ -169,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: 25,
                         child: SvgPicture.asset(
                           'assets/activitySend.svg',
-                          color: Colors.red,
+                          color: Color.fromARGB(255, 221, 9, 9),
                         ),
                       ),
                       title: Container(
@@ -220,7 +220,6 @@ class _HomeScreenState extends State<HomeScreen> {
             String ethPrice = contractProvider.balance!.getInEther.toString();
             var ePrice = double.parse(ethPrice);
             double newUSDPrice = dPrice * ePrice;
-            //print('${newUSDPrice.toString().substring(0, 5)}' + 'USD');
             return Container(
               child: Text('\$${newUSDPrice.toString().substring(0, 5)} USD',
                   style: GoogleFonts.titilliumWeb()),
