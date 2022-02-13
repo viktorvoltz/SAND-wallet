@@ -6,6 +6,8 @@ import 'package:web3_transactions/widgets/recieveether.dart';
 import 'package:web3_transactions/services/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../widgets/backgroungtile.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -34,6 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: AppBar(
+            elevation: 5.0,
+            bottomOpacity: 0.0,
+            shadowColor: const Color.fromARGB(255, 140, 12, 179),
             title: contractProvider.ownAdress.toString() == 'null'
                 ? Text('null address: ')
                 : Text(
@@ -80,23 +85,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 Column(
                   children: [
                     Container(
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          fixedSize: const Size(40, 40),
-                          shape: const CircleBorder(),
-                        ),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/sendeth');
-                        },
-                        child: Container(
-                          child: SvgPicture.asset(
-                            'assets/sendETH.svg',
-                            alignment: Alignment.center,
-                            fit: BoxFit.scaleDown,
-                            color: Colors.white,
+                      height: 65,
+                      //color: Colors.yellow,
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            bottom: -4.0,
+                            child: Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 5, 106, 189),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  )),
+                            ),
                           ),
-                        ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(40, 40),
+                              shape: const CircleBorder(),
+                              primary: Color.fromARGB(255, 115, 186, 233),
+                              minimumSize: Size(60, 60),
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 140, 12, 179),
+                                  width: 2.0),
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/sendeth');
+                            },
+                            child: Container(
+                              child: SvgPicture.asset(
+                                'assets/sendETH.svg',
+                                alignment: Alignment.center,
+                                fit: BoxFit.scaleDown,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Container(
@@ -110,8 +138,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 50,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            shape: const CircleBorder(),
-                            alignment: Alignment(0.0, 0.0)),
+                          shape: const CircleBorder(),
+                          alignment: Alignment(0.0, 0.0),
+                          primary: const Color.fromARGB(255, 5, 106, 189),
+                        ),
                         onPressed: () {
                           modalBottomSheetMenu(
                               context, contractProvider.ownAdress.toString());
@@ -163,40 +193,49 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: reversedTransaction.length,
                   itemBuilder: (BuildContext context, index) {
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 7.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 2.0
-                          )
-                        ),
-                        child: ListTile(
-                          horizontalTitleGap: 1.0,
-                          leading: Container(
-                            height: 25,
-                            width: 25,
-                            child: SvgPicture.asset(
-                              'assets/activitySend.svg',
-                              color: Color.fromARGB(255, 221, 9, 9),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Stack(
+                        children: [
+                          Background(),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 7.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 115, 186, 233),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      color: Color.fromARGB(255, 140, 12, 179),
+                                      width: 2.0)),
+                              child: ListTile(
+                                horizontalTitleGap: 1.0,
+                                leading: Container(
+                                  height: 25,
+                                  width: 25,
+                                  child: SvgPicture.asset(
+                                    'assets/activitySend.svg',
+                                    color: Color.fromARGB(255, 221, 9, 9),
+                                  ),
+                                ),
+                                title: Container(
+                                  child: Text(
+                                      'To: ${reversedTransaction[index]["to"]!.substring(0, 31)}...',
+                                      overflow: TextOverflow.fade,
+                                      style: GoogleFonts.titilliumWeb(
+                                          fontWeight: FontWeight.w700)),
+                                ),
+                                subtitle: Text(
+                                  'From: ${reversedTransaction[index]["from"]!.substring(0, 31)}...',
+                                  overflow: TextOverflow.fade,
+                                ),
+                                trailing: Text(
+                                    '${reversedTransaction[index]["amount"]!} ETH',
+                                    style: GoogleFonts.titilliumWeb(
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 16)),
+                              ),
                             ),
                           ),
-                          title: Container(
-                            child: Text(
-                                'To: ${reversedTransaction[index]["to"]!.substring(0, 31)}...',
-                                overflow: TextOverflow.fade,
-                                style: GoogleFonts.titilliumWeb(
-                                    fontWeight: FontWeight.w700)),
-                          ),
-                          subtitle: Text(
-                            'From: ${reversedTransaction[index]["from"]!.substring(0, 31)}...',
-                            overflow: TextOverflow.fade,
-                          ),
-                          trailing: Text(
-                              '${reversedTransaction[index]["amount"]!} ETH',
-                              style: GoogleFonts.titilliumWeb(
-                                  fontWeight: FontWeight.w700, fontSize: 16)),
-                        ),
+                        ],
                       ),
                     );
                   },
