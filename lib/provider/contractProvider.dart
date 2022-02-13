@@ -9,7 +9,7 @@ import 'package:flutter/services.dart';
 class ContractProvider extends ChangeNotifier {
   final String _rpcUrl = "http://10.0.2.2:7545";
   final String _wsUrl = "ws://10.0.2.2:7545/";
-  String privateKey = '1976eed3a1107982979417e4316d3a50444576cd207d35fdd8d4591af8eae0a1';
+  String privateKey = '10b3cad2f35f21516d9f1edff333e39bd8574a72da255f3982831e1fa47239ce';
 
   Web3Client? _client;
 

@@ -31,7 +31,7 @@ void modalBottomSheetMenu(BuildContext context, String address) {
                   height: 5,
                   width: 50,
                   decoration: BoxDecoration(
-                      color: Colors.grey,
+                      color: const Color.fromARGB(255, 140, 12, 179),
                       borderRadius: BorderRadius.circular(30)),
                 ),
                 Container(

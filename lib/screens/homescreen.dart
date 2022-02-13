@@ -65,7 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin: EdgeInsets.only(top: 30),
               height: 40,
-              child: SvgPicture.asset('assets/eth.svg'),
+              child: SvgPicture.asset(
+                'assets/eth.svg',
+                color: const Color.fromARGB(255, 140, 12, 179),
+              ),
             ),
             Container(
               alignment: Alignment.center,
@@ -86,7 +89,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Container(
                       height: 65,
-                      //color: Colors.yellow,
                       child: Stack(
                         children: [
                           Positioned.fill(
@@ -132,24 +134,46 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                   ],
                 ),
+                SizedBox(width: 20,),
                 Column(
                   children: [
                     Container(
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          alignment: Alignment(0.0, 0.0),
-                          primary: const Color.fromARGB(255, 5, 106, 189),
-                        ),
-                        onPressed: () {
-                          modalBottomSheetMenu(
-                              context, contractProvider.ownAdress.toString());
-                        },
-                        child: Icon(
-                          Icons.arrow_downward_sharp,
-                          size: 40,
-                        ),
+                      height: 65,
+                      child: Stack(
+                        children: [
+                          Positioned.fill(
+                            bottom: -4.0,
+                            child: Container(
+                              margin: EdgeInsets.all(0),
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 5, 106, 189),
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.black,
+                                    width: 2.0,
+                                  )),
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: const CircleBorder(),
+                              alignment: Alignment(0.0, 0.0),
+                              primary: const Color.fromARGB(255, 115, 186, 233),
+                              minimumSize: Size(60, 60),
+                              side: BorderSide(
+                                  color: Color.fromARGB(255, 140, 12, 179),
+                                  width: 2.0),
+                            ),
+                            onPressed: () {
+                              modalBottomSheetMenu(
+                                  context, contractProvider.ownAdress.toString());
+                            },
+                            child: Icon(
+                              Icons.arrow_downward_sharp,
+                              size: 30,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Container(
