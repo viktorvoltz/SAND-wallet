@@ -162,31 +162,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ListView.builder(
                   itemCount: reversedTransaction.length,
                   itemBuilder: (BuildContext context, index) {
-                    return ListTile(
-                      horizontalTitleGap: 1.0,
-                      leading: Container(
-                        height: 25,
-                        width: 25,
-                        child: SvgPicture.asset(
-                          'assets/activitySend.svg',
-                          color: Color.fromARGB(255, 221, 9, 9),
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 7.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 2.0
+                          )
+                        ),
+                        child: ListTile(
+                          horizontalTitleGap: 1.0,
+                          leading: Container(
+                            height: 25,
+                            width: 25,
+                            child: SvgPicture.asset(
+                              'assets/activitySend.svg',
+                              color: Color.fromARGB(255, 221, 9, 9),
+                            ),
+                          ),
+                          title: Container(
+                            child: Text(
+                                'To: ${reversedTransaction[index]["to"]!.substring(0, 31)}...',
+                                overflow: TextOverflow.fade,
+                                style: GoogleFonts.titilliumWeb(
+                                    fontWeight: FontWeight.w700)),
+                          ),
+                          subtitle: Text(
+                            'From: ${reversedTransaction[index]["from"]!.substring(0, 31)}...',
+                            overflow: TextOverflow.fade,
+                          ),
+                          trailing: Text(
+                              '${reversedTransaction[index]["amount"]!} ETH',
+                              style: GoogleFonts.titilliumWeb(
+                                  fontWeight: FontWeight.w700, fontSize: 16)),
                         ),
                       ),
-                      title: Container(
-                        child: Text(
-                            'To: ${reversedTransaction[index]["to"]!.substring(0, 31)}...',
-                            overflow: TextOverflow.fade,
-                            style: GoogleFonts.titilliumWeb(
-                                fontWeight: FontWeight.w700)),
-                      ),
-                      subtitle: Text(
-                        'From: ${reversedTransaction[index]["from"]!.substring(0, 31)}...',
-                        overflow: TextOverflow.fade,
-                      ),
-                      trailing: Text(
-                          '${reversedTransaction[index]["amount"]!} ETH',
-                          style: GoogleFonts.titilliumWeb(
-                              fontWeight: FontWeight.w700, fontSize: 16)),
                     );
                   },
                 ),
