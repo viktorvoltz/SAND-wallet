@@ -2,7 +2,12 @@
 
 This is an on-chain(truffle) ETH wallet with traditional crypto wallet features (including live ETH price display). I enjoyed playing with emojis in this one 😎
 
-## homescreen with activity details
+## New UI
+<img src='https://user-images.githubusercontent.com/45709308/154718497-2df62c50-49b9-4dac-bffa-c9d2e3b4565e.png' width=50% height=50%>
+
+<img src='https://user-images.githubusercontent.com/45709308/154718594-b0013e07-0512-402c-94fd-9fc3e2a14ed9.png' width=50% height=50%>
+
+## homescreen with activity details. (Previous UI)
 <img src="https://user-images.githubusercontent.com/45709308/153412786-538c2fa6-e382-4974-8bd7-cce2faf592c0.png" width=40% height=40%>
 
 ## Ganache wallet addresses with corresponding transactions
